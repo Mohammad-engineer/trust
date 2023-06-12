@@ -15,7 +15,10 @@ export const navigation = [
       {
         text: 'وظایف',
         path: '/tasks'
+      }, {
+        text: 'کاربران',
+        path: '/users'
       }
     ]
   }
-  ];
+];
