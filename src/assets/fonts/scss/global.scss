@@ -1,0 +1,89 @@
+html {
+  overflow-y: unset;
+}
+
+.v-application--is-rtl {
+  @import "./rtl.scss";
+}
+
+.ltred {
+  direction: ltr;
+}
+
+.rtled {
+  direction: rtl;
+}
+
+// rtlize snackbar here because it is out of main app directive
+.v-application--is-rtl ~ .vts.v-snack .vts__message {
+  margin-right: unset;
+  margin-left: auto;
+  font-family: Dana;
+  direction: rtl;
+}
+
+.no-scrollbar {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    width: 0 !important
+  }
+}
+
+.v-img--darken > .v-image__image {
+  filter: brightness(70%);
+}
+
+.slide-from-up-enter-active, .slide-from-up-leave-active {
+  transition: all 0.2s ease-out;
+  backface-visibility: hidden;
+}
+
+.slide-from-up-enter, .slide-from-up-leave-to {
+  height: 0;
+  opacity: 0;
+}
+
+.slide-from-up-enter-to, .slide-from-up-leave {
+  height: 20px;
+  opacity: 1;
+}
+
+.vue-grid-item.item-textarea > form {
+  height: 100%;
+  & > .row {
+    height: 100%;
+    & > div {
+      padding-bottom: 0;
+      & > .v-input {
+        height: 100%;
+        & > .v-input__control {
+          height: 100%;
+          & > .v-input__slot {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+.bjs-powered-by {
+  display: none;
+}
+
+.djs-group .djs-visual text {
+  font-family: Dana !important;
+  text-anchor: end;
+}
+
+.v-text-field.v-text-field--enclosed .v-text-field__details {
+  margin-bottom: 0;
+}
+
+.ck-editor {
+
+  ul, ol {
+    padding-right: 32px;
+  }
+}
