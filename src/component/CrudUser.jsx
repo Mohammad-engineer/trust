@@ -1,54 +1,26 @@
-import { useDeleteTodo, usePostUser, useUpdateTodo } from '../services/index'
+import { usePostUser, useUpdateUser } from '../services/index'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, FormLabel, MenuItem } from '@mui/material';
 import Input from '@mui/joy/Input';
 import Stack from '@mui/joy/Stack';
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import { useLocation } from "react-router-dom";
 
 const genderList = [
     {
         value: 'male',
-        label: 'Male',
+        label: 'male',
     },
     {
         value: 'female',
-        label: 'Female',
+        label: 'female',
     },
 
 ];
 
-
-
 const CrudUser = () => {
-
-    // const {
-    //     isUpdating,
-    //     isErrorUpdating,
-    //     errorUpdating,
-    //     UpdateTodo
-    // } = useUpdateTodo()
-
-    // const {
-    //     isDeleting,
-    //     isErrorDeleting,
-    //     errorDeleting,
-    //     DeleteTodo
-    // } = useDeleteTodo()
-
-    // const handleUpdateTodo = (id, isComplete) => {
-    //     const data = { isComplete: !isComplete }
-    //     UpdateTodo({ id, data })
-    // }
-
-    const {
-        isCreating,
-        isSuccessCreating,
-        isErrorCreating,
-        errorCreateing,
-        CreateUser
-    } = usePostUser()
+    const location = useLocation();
 
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
@@ -65,12 +37,46 @@ const CrudUser = () => {
     const [latitude, setLatitude] = useState('')
     const [longitude, setLongitude] = useState('')
 
+    useEffect(() => {
+        if (location.state) {
+            setFirstName(location.state.first_name);
+            setLastName(location.state.last_name);
+            setEmail(location.state.email);
+            setPhone(location.state.phone);
+            setStreet(location.state.street);
+            setCountry(location.state.country);
+            setCity(location.state.city);
+            setState(location.state.state);
+            setZipCode(location.state.zipcode);
+            setGender(location.state.gender);
+            setBirthday(location.state.date_of_birth);
+            setJob(location.state.job);
+            setLatitude(location.state.latitude);
+            setLongitude(location.state.longitude);
+        }
 
-    const handleAddUser = () => {
+    }, [location.state])
+
+    const {
+        isUpdating,
+        isErrorUpdating,
+        errorUpdating,
+        UpdateUser
+    } = useUpdateUser()
+
+    const {
+        isCreating,
+        isSuccessCreating,
+        isErrorCreating,
+        errorCreateing,
+        CreateUser
+    } = usePostUser()
+
+    const handlerUser = () => {
         const data = {
             last_name: lastName,
             email: email,
-            id: 1001,
+            id: location.state ? location.state.id : 1001,
             phone: phone,
             street: street,
             state: state,
@@ -85,19 +91,21 @@ const CrudUser = () => {
             longitude: longitude
         }
 
-        CreateUser(JSON.stringify(data))
+        location.state ? UpdateUser(data.id, data) : CreateUser(JSON.stringify(data))
 
-        // console.log(data);
     }
 
-
-
-
     return (
+
         <>
             {isErrorCreating && <p>{errorCreateing.message}</p>}
+            {isErrorUpdating && <p>{errorUpdating.message}</p>}
+
             {isCreating && <p>Loading..</p>}
+            {isUpdating && <p>Loading..</p>}
+
             {isSuccessCreating && <p>User added successfull</p>}
+
             <Box
                 component="form"
                 sx={{
@@ -113,6 +121,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setFirstName(e.target.value)}
+                    value={firstName}
                 />
 
                 <TextField
@@ -121,6 +130,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setLastName(e.target.value)}
+                    value={lastName}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -128,6 +138,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setPhone(e.target.value)}
+                    value={phone}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -135,6 +146,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setEmail(e.target.value)}
+                    value={email}
                 />
                 <Stack spacing={1.5} sx={{ maxWidth: 200 }}>
                     <FormLabel
@@ -152,6 +164,7 @@ const CrudUser = () => {
                                 },
                             }}
                             onChange={(e) => setBirthday(e.target.value)}
+                            value={birthDay}
                         />
                     </FormLabel>
 
@@ -165,7 +178,7 @@ const CrudUser = () => {
 
                 >
                     {genderList.map((option) => (
-                        <MenuItem key={option.value} value={option.value} onClick={(e) => setGender(e.currentTarget.innerText)} >
+                        <MenuItem key={option.value} value={gender ? gender : option.value} onClick={(e) => setGender(e.currentTarget.innerText)}>
                             {option.label}
                         </MenuItem>
                     ))}
@@ -176,6 +189,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setJob(e.target.value)}
+                    value={job}
                 />
 
             </Box>
@@ -194,6 +208,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setCountry(e.target.value)}
+                    value={country}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -201,6 +216,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setCity(e.target.value)}
+                    value={city}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -208,6 +224,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setStreet(e.target.value)}
+                    value={street}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -215,6 +232,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setState(e.target.value)}
+                    value={state}
                 />
                 <TextField
                     id="outlined-multiline-flexible"
@@ -222,6 +240,7 @@ const CrudUser = () => {
                     multiline
                     maxRows={4}
                     onChange={(e) => setZipCode(e.target.value)}
+                    value={zipCode}
                 />
                 <Stack spacing={1.5} sx={{ maxWidth: 200 }}>
                     <FormLabel
@@ -242,6 +261,7 @@ const CrudUser = () => {
                                 },
                             }}
                             onChange={(e) => setLongitude(e.target.value)}
+                            value={+longitude}
                         />
                     </FormLabel>
                     <FormLabel
@@ -262,6 +282,7 @@ const CrudUser = () => {
                                 },
                             }}
                             onChange={(e) => setLatitude(e.target.value)}
+                            value={+latitude}
                         />
                     </FormLabel>
                 </Stack>
@@ -281,7 +302,7 @@ const CrudUser = () => {
                 <Button
                     variant="contained"
                     color="primary"
-                    onClick={handleAddUser}
+                    onClick={handlerUser}
                 >
                     Submit
                 </Button>

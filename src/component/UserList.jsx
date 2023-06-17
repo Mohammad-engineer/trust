@@ -1,17 +1,18 @@
-import { useGetUsers, usePostUser, useDeleteUser } from '../services/index'
+import { useGetUsers, useDeleteUser } from '../services/index'
 
 import { DataGrid } from '@mui/x-data-grid';
 import { Button } from '@mui/material';
 
+import { useNavigate } from "react-router-dom";
+
 
 function UserList() {
+    const { users, isLoading, isError, error } = useGetUsers()
 
-    const {
-        isDeleting,
-        isErrorDeleting,
-        errorDeleting,
-        DeleteUser
-    } = useDeleteUser()
+    const navigate = new useNavigate();
+    const routeChange = (cellValues) => {
+        navigate(`/crud-user`, { state: cellValues.row });
+    }
 
     const columns = [
         { field: 'id', headerName: 'ID', width: 90 },
@@ -76,26 +77,26 @@ function UserList() {
             width: 200,
             editable: true,
         },
-        {
-            field: 'zipcode',
-            headerName: 'Zipcode',
-            width: 80,
-            editable: true,
-        },
-        {
-            field: 'latitude',
-            headerName: 'Latitude',
-            width: 80,
-            editable: true,
-            type: 'number'
-        },
-        {
-            field: 'longitude',
-            headerName: 'longitude',
-            width: 80,
-            editable: true,
-            type: 'number'
-        },
+        // {
+        //     field: 'zipcode',
+        //     headerName: 'Zipcode',
+        //     width: 80,
+        //     editable: true,
+        // },
+        // {
+        //     field: 'latitude',
+        //     headerName: 'Latitude',
+        //     width: 80,
+        //     editable: true,
+        //     type: 'number'
+        // },
+        // {
+        //     field: 'longitude',
+        //     headerName: 'longitude',
+        //     width: 80,
+        //     editable: true,
+        //     type: 'number'
+        // },
         {
             field: 'job',
             headerName: 'Job',
@@ -118,13 +119,32 @@ function UserList() {
                     </Button>
                 );
             }
+        },
+        {
+            field: "Update",
+            width: 100,
+            renderCell: (cellValues) => {
+                return (
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            routeChange(cellValues)
+                        }}
+                    >
+                        Update
+                    </Button>
+                );
+            }
         }
 
     ];
-
-
-
-    const { users, isLoading, isError, error } = useGetUsers()
+    const {
+        isDeleting,
+        isErrorDeleting,
+        errorDeleting,
+        DeleteUser
+    } = useDeleteUser()
 
     return (
         <div className='App'>
@@ -132,23 +152,26 @@ function UserList() {
 
             {isLoading && <p>Loading...</p>}
             {isError && <p>{error.message}</p>}
-            <div className='content-container'>
-
-                <DataGrid
-                    rows={users}
-                    columns={columns}
-                    initialState={{
-                        pagination: {
-                            paginationModel: {
-                                pageSize: 10,
+            {isDeleting && <p>Loading...</p>}
+            {isErrorDeleting && <p>{errorDeleting.message}</p>}
+            {users ?
+                <div className='content-container'>
+                    <DataGrid
+                        rows={users}
+                        columns={columns}
+                        initialState={{
+                            pagination: {
+                                paginationModel: {
+                                    pageSize: 10,
+                                },
                             },
-                        },
-                    }}
-                    pageSizeOptions={[10]}
-                    checkboxSelection
-                    disableRowSelectionOnClick
-                />
-            </div>
+                        }}
+                        pageSizeOptions={[10]}
+                        checkboxSelection
+                        disableRowSelectionOnClick
+                    />
+                </div>
+                : null}
 
         </div>
     );
