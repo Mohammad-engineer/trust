@@ -1,16 +1,17 @@
 import './App.css';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import Comments from './component/comments';
-
-
-const queryClient = new QueryClient()
-
+import React from 'react';
+import useThemeMode from './ThemeMode';
 
 const App = ()=> {
+  const[mode,toggleMode] = useThemeMode()
   return (
-    <QueryClientProvider client={queryClient}>
-      <Comments />
-    </QueryClientProvider>
+    <div className='theme-mode'
+      style={{background:mode ==='dark'?'#202020':'#ffffff',
+      transition:'all .2s ease-in-out'}}
+    >
+      <button className='btn' type='button' onClick={toggleMode}>switch mode</button>
+    </div>
+  
   );
 }
 
