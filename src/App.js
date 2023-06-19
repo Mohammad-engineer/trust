@@ -1,24 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
+import useLocalStorage from 'use-local-storage'
+
+// //For first solution
+import useDarkMode from './useDarkMode';
 
 function App() {
+  // //For first solution
+  // const [theme, toggleTheme] = useDarkMode()
+
+
+  //for second solution
+  const defaultDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const [theme, setTheme] = useLocalStorage('theme', defaultDark ? 'dark' : 'light');
+
+  const switchTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme)
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // //For first solution
+    // <div className="App" style={{
+    //   background: theme === 'dark' ? '#212121' : '#ffffff',
+    //   transition: '.2s all'
+    // }}>
+    //   <button onClick={toggleTheme}>Switch theme</button>
+    // </div>
+
+
+    //for second solution
+    <div className="App" data-theme={theme}>
+      <span style={{ color: theme === 'light' ? 'black' : 'yellow' }}>Darkmode and Lightmode Themes</span>
+      <button onClick={switchTheme}>
+        Switch to {theme === 'light' ? 'Dark' : 'Light'}
+      </button>
+    </div >
   );
 }
 
