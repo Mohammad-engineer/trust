@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 import { deleteTask } from "../redux/tasksSlice";
+import { Checkbox } from '@material-ui/core';
 
-const TodoItem = ({ id, title }) => {
+const TodoItem = ({ id, title, completed }) => {
 
     const dispatch = useDispatch();
 
@@ -18,6 +19,9 @@ const TodoItem = ({ id, title }) => {
         <li className="task-item">
             <div>
                 {title}
+            </div>
+            <div>
+                <Checkbox value={completed} />
             </div>
             <div>
                 <button className="remove-task-button" onClick={() => {

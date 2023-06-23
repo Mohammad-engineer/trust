@@ -9,7 +9,7 @@
 
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://cra.link/PWA
-import { serviceWorkerRegistrationEnhancements } from "./serviceWorkerRegistrationEnhancements"
+
 
 const isLocalhost = Boolean(
   window.location.hostname === 'localhost' ||
@@ -111,7 +111,7 @@ function checkValidServiceWorker(swUrl, config) {
       ) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then((registration) => {
-          serviceWorkerRegistrationEnhancements(config, registration);
+
           registration.unregister().then(() => {
             window.location.reload();
           });
