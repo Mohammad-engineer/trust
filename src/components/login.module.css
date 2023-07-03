@@ -1,0 +1,17 @@
+.login_image {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  position: relative;
+}
+.login_image img {
+  width: 400px;
+}
+.login_image .welcome_login {
+  color: #ffffff;
+  padding: 20%;
+  font-size: 30px;
+  font-family: sans-serif;
+}/*# sourceMappingURL=login.module.css.map */

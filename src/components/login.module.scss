@@ -1,0 +1,17 @@
+.login_image{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 100%;
+    position: relative;
+    img{
+        width: 400px;
+    }
+    .welcome_login{
+        color: #ffffff;
+        padding: 20%;
+        font-size: 30px;
+        font-family: sans-serif;
+    }
+}
