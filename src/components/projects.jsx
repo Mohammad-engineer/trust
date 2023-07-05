@@ -9,6 +9,7 @@ import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 //import iamges
 import projectlogo from "../assets/projects/project-page-logo.png";
+import zap1 from "../assets/projects/zap1.png";
 //pagination
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -25,6 +26,8 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 // navigate user after Login
 import { useNavigate } from "react-router-dom";
 
@@ -112,22 +115,61 @@ const Projects = () => {
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
-              columnGap: '20px',
-              width: '100%',
-              flexWrap: 'wrap',
-              rowGap: '20px'
+              //width: "100%",
             }}
           >
             <Box className={styles.project_wrapper}>
-              <Card sx={{ flexBasis:'20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+
+            <Card className={styles.project_card } >
+                <CardHeader className={styles.add_new_project}
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{ bgcolor: '#ffffff', width: '50px',height: '50px' }} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar className={styles.add_new_icon}
+                      sx={{
+                        //bgcolor: "#ff0000",
+
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <AddCircleOutlineOutlinedIcon />
+                    </Avatar>
+                  }
+                  title="Add New"
+                  subheader="Project"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Lizard sdfsdfsdfsfsf
+                  </Typography>
+          
+                </CardContent> 
+            
+              </Card>
+
+              <Card className={styles.project_card} >
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
+                  avatar={
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -144,15 +186,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ maxWidth: '20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{bgcolor:'#ffffff', width:'50px',height:'50px'}} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -169,15 +223,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ flexBasis:'20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{ bgcolor: '#ffffff', width: '50px',height: '50px' }} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -194,15 +260,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ maxWidth: '20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{bgcolor:'#ffffff', width:'50px',height:'50px'}} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -219,15 +297,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ flexBasis:'20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{ bgcolor: '#ffffff', width: '50px',height: '50px' }} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -244,15 +334,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ maxWidth: '20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{bgcolor:'#ffffff', width:'50px',height:'50px'}} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -269,15 +371,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ flexBasis:'20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{ bgcolor: '#ffffff', width: '50px',height: '50px' }} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -294,15 +408,27 @@ const Projects = () => {
                 </CardActions>
               </Card>
 
-              <Card sx={{ maxWidth: '20%' }}>
-                <CardHeader sx={{paddingBottom: '60px'}}
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
                   avatar={
-                    <Avatar sx={{bgcolor:'#ffffff', width:'50px',height:'50px'}} aria-label="recipe">
-                      <img src={projectlogo} alt="" />
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
                     </Avatar>
                   }
                   action={
-                    <IconButton aria-label="settings" sx={{paddingLeft: '30px'}}>
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
                       <MoreVertIcon />
                     </IconButton>
                   }
@@ -318,6 +444,81 @@ const Projects = () => {
                   </Stack>
                 </CardActions>
               </Card>
+
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
+                  avatar={
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title="Project1"
+                  subheader="12 Zones"
+                />
+
+                <CardActions disableSpacing>
+                  <Stack sx={{ width: "auto" }} spacing={2}>
+                    <Alert severity="error" sx={{ padding: "0px 7px" }}>
+                      5 DAYS LEFT
+                    </Alert>
+                  </Stack>
+                </CardActions>
+              </Card>
+
+              <Card className={styles.project_card}>
+                <CardHeader
+                  sx={{ paddingBottom: "60px" }}
+                  avatar={
+                    <Avatar
+                      sx={{
+                        bgcolor: "#ff0000",
+                        width: "50px",
+                        height: "50px",
+                        borderRadius: "8px",
+                      }}
+                      aria-label="recipe"
+                    >
+                      <img src={zap1} alt="" />
+                    </Avatar>
+                  }
+                  action={
+                    <IconButton
+                      aria-label="settings"
+                      sx={{ paddingLeft: "30px" }}
+                    >
+                      <MoreVertIcon />
+                    </IconButton>
+                  }
+                  title="Project2"
+                  subheader="5 Zones"
+                />
+
+                <CardActions disableSpacing>
+                  <Stack sx={{ width: "auto" }} spacing={2}>
+                    <Alert severity="warning" sx={{ padding: "0px 7px" }}>
+                      EXPIRED
+                    </Alert>
+                  </Stack>
+                </CardActions>
+              </Card>
+
             </Box>
 
             <Box className={styles.projects_pagination}>
