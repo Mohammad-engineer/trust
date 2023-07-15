@@ -88,7 +88,7 @@ const Login = () => {
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
-        <Grid item xs={false} sm={4} md={2} sx={{ backgroundColor: "#FE4B24" }}>
+        <Grid item xs={12} sm={4} md={2} sx={{ backgroundColor: "#FE4B24" }}>
           <Box className={styles.login_image}>
             <span className={styles.welcome_login}>
               Welcome <br /> Back!

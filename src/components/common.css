@@ -1,0 +1,22 @@
+.project_sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+  padding: 20px;
+}
+
+.pr_left_col {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project_user {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: center;
+}/*# sourceMappingURL=common.css.map */
